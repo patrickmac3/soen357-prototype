@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GoalForm from "./components/GoalForm";
 import GoalList from "./components/GoalList";
+import { goals } from "../Variables";
 const ExpensePage = () => {
   const [isFormCollapsed, setFormCollapsed] = useState(true);
 
@@ -8,17 +9,24 @@ const ExpensePage = () => {
     setFormCollapsed(!isFormCollapsed);
   };
 
-  const goals = [
-    { title: "Trip to south america", saved: 500, goal: 1500 , description: "description with information that could be important to remeber, such as reason, date, ...."},
-    { title: "Trip to south america", saved: 1000, goal: 1500 ,  description: "description with information that could be important to remeber, such as reason, date, ...."},
-    { title: "Trip to south america", saved: 700, goal: 1500 ,  description: "description with information that could be important to remeber, such as reason, date, ...."},
-  ];
-
+  function calculateTotals(goals) {
+    let totalSaved = 0;
+    let totalGoal = 0;
+  
+    goals.forEach((goal) => {
+      totalSaved += goal.saved;
+      totalGoal += goal.goal;
+    });
+  
+    return { totalSaved, totalGoal };
+  }
+  
+  const { totalSaved, totalGoal } = calculateTotals(goals);
 
   return (
     <>
-      <div className="mx-auto p-6 m-10 border rounded-2xl border-gray-300 lg:w-3/4 shadow-lg bg-sky-200">
-        <h1 className="text-2xl font-semibold">Savings: <span className="text-4xl ml-3 font-semibold">750 $ / 2000$ </span><i className="text-sm ml-2">in total </i></h1>
+      <div className="mx-auto p-6 m-10 border rounded-2xl border-gray-300 lg:w-3/4 shadow-lg bg-sky-500 text-white">
+        <h1 className="text-2xl font-semibold">Savings: <span className="text-4xl ml-3 font-semibold">{totalSaved} $ / {totalGoal}$ </span><i className="text-sm ml-2">in total </i></h1>
       </div>
       <div className="mx-auto p-6 m-10 border rounded-2xl border-gray-300 lg:w-3/4 shadow-lg bg-white">
         <div className="flex justify-between">

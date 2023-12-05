@@ -3,27 +3,10 @@ import { Link } from "react-router-dom";
 import ExpenseList from "./components/ExpenseList";
 import GoalList from "./components/GoalList";
 import ProgressBar from "./components/ProgressBar";
+import { expenses, totalBalance, goals, income } from "../Variables";
+import IncomeList from "./components/IncomeList";
 
 const HomePage = () => {
-  const totalBalance = 10_000;
-
-  const expenses = [
-    { amount: 26, category: "Food", description: "McDonalds Fast Food" },
-    { amount: 50, category: "Transport", description: "Bus Fare" },
-    { amount: 1200, category: "Rent", description: "Monthly Rent" },
-    { amount: 30, category: "Personal", description: "Toiletries" },
-    { amount: 100, category: "Other", description: "Miscellaneous Expense" },
-    { amount: 160, category: "Food", description: "McDonalds Fast Food" },
-    { amount: 5, category: "Transport", description: "Bus Fare" },
-    { amount: 30, category: "Personal", description: "Toiletries" },
-    { amount: 100, category: "Other", description: "Miscellaneous Expense" },
-  ];
-
-  const goals = [
-    { title: "Trip to south america", saved: 500, goal: 1500 },
-    { title: "Trip to south america", saved: 1000, goal: 1500 },
-    { title: "Trip to south america", saved: 700, goal: 1500 },
-  ];
 
   return (
     <>
@@ -70,7 +53,7 @@ const HomePage = () => {
             <h1 className="text-2xl font-semibold">Expenses</h1>
           </div>
           <div className="text-right">
-            <Link to="analysis">
+            <Link to="/analysis">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
                 monthly analysis
               </button>
@@ -85,7 +68,7 @@ const HomePage = () => {
             <h1 className="text-2xl font-semibold">Income</h1>
           </div>
           <div className="text-right">
-            <Link to="income">
+            <Link to="/income">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
                 view income
               </button>
@@ -93,7 +76,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="m-5 p-6  rounded-2xl">
-          <ExpenseList expenses={expenses} numOfExpense={3} />
+          <IncomeList incomes={income} numOfIncomes={3}/>
         </div>
       </div>
       {/* Expenses */}
@@ -103,7 +86,7 @@ const HomePage = () => {
             <h1 className="text-2xl font-semibold">Expenses</h1>
           </div>
           <div className="text-right">
-            <Link to="expense">
+            <Link to="/expense">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
                 view expenses
               </button>
@@ -122,7 +105,7 @@ const HomePage = () => {
             <h1 className="text-2xl font-semibold">Saving Goals</h1>
           </div>
           <div className="text-right">
-            <Link to="saving-goals">
+            <Link to="/saving-goals">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
                 view saving goals
               </button>

@@ -3,18 +3,18 @@ import DropdownMenu from "./DropDownMenu";
 
 const Navbar = () => {
   const navLinks = [
-    { to: "dashbboard", label: "Home" },
-    { to: "expense", label: "Expenses" },
-    { to: "income", label: "Income" },
-    { to: "saving-goals", label: "Savings" },
-    { to: "tips", label: "Education" },
-    { to: "analysis", label: "Analytsis" },
+    { to: "/dashboard", label: "Home" },
+    { to: "/expense", label: "Expenses" },
+    { to: "/income", label: "Income" },
+    { to: "/saving-goals", label: "Savings" },
+    { to: "/tips", label: "Education" },
+    { to: "/analysis", label: "Analytsis" },
   ];
 
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="dashboard" className="text-white text-2xl font-bold">
+        <Link to="/dashboard" className="text-white text-2xl font-bold">
           SmartSpend
         </Link>
 

@@ -3,38 +3,23 @@ import DataPieChart from "./components/DataPieChart";
 import BarDataSet from "./components/BarDataSet";
 import IncomeExpensesChart from "./components/IncomeExpensesChart";
 import AverageComparisonChart from "./components/AverageComparisonChart";
+import { income , expenses, totalExpenses, calculateCategorySum } from "../Variables";
 
 const AnalysisPage = () => {
-  const expenses = [
-    { amount: 26, category: "Food", description: "McDonalds Fast Food" },
-    { amount: 50, category: "Transport", description: "Bus Fare" },
-    { amount: 1200, category: "Rent", description: "Monthly Rent" },
-    { amount: 30, category: "Personal", description: "Toiletries" },
-    { amount: 100, category: "Other", description: "Miscellaneous Expense" },
-    { amount: 160, category: "Food", description: "McDonalds Fast Food" },
-    { amount: 5, category: "Transport", description: "Bus Fare" },
-    { amount: 600, category: "Personal", description: "Toiletries" },
-    { amount: 100, category: "Other", description: "Miscellaneous Expense" },
-  ];
 
-  const calculateCategorySum = (expenses, category) => {
-    return expenses.reduce((sum, expense) => {
-      // Check if the expense belongs to the specified category
-      if (expense.category === category) {
-        // Add the amount to the sum
-        return sum + expense.amount;
-      }
-      // If the category doesn't match, return the current sum
-      return sum;
-    }, 0); // Start with an initial sum of 0
-  };
 
-  const totalExpenses =
-    calculateCategorySum(expenses, "Food") +
-    calculateCategorySum(expenses, "Transport") +
-    calculateCategorySum(expenses, "Personal") +
-    calculateCategorySum(expenses, "Rent") +
-    calculateCategorySum(expenses, "Other");
+  // const calculateCategorySum = (expenses, category) => {
+  //   return expenses.reduce((sum, expense) => {
+  //     // Check if the expense belongs to the specified category
+  //     if (expense.category === category) {
+  //       // Add the amount to the sum
+  //       return sum + expense.amount;
+  //     }
+  //     // If the category doesn't match, return the current sum
+  //     return sum;
+  //   }, 0); // Start with an initial sum of 0
+  // };
+
   const expenseData = [
     {
       value: calculateCategorySum(expenses, "Food"),
@@ -62,6 +47,18 @@ const AnalysisPage = () => {
       color: "yellow",
     },
   ];
+
+  const totalIncome = income.reduce(
+    (sum, entry) => sum + entry.amount,
+    0
+  );
+
+  const totalExpenses = expenses.reduce(
+    (sum, entry) => sum + entry.amount,
+    0
+  );
+
+
   const financialData = [
     { income: 4000, expenses: 300, month: "January" },
     { income: 3500, expenses: 400, month: "February" },
@@ -74,27 +71,25 @@ const AnalysisPage = () => {
     { income: 5300, expenses: 600, month: "September" },
     { income: 4800, expenses: 400, month: "October" },
     { income: 5100, expenses: 550, month: "November" },
-    { income: 5800, expenses: 700, month: "December" },
+    { income: totalIncome, expenses: calculateCategorySum(expenses, 'amount' )}
+
   ];
 
-  const totalIncome = financialData.reduce(
-    (sum, entry) => sum + entry.income,
-    0
-  );
+
   const averageMonthlyExpenses =
     financialData.reduce((sum, entry) => sum + entry.expenses, 0) /
     financialData.length;
   const averageMonthlyIncome =
     financialData.reduce((sum, entry) => sum + entry.income, 0) /
     financialData.length;
-  const income = 700;
+
   return (
     <>
       {/* Header */}
       <div className="mx-auto p-6 m-10 border rounded-2xl border-gray-300 lg:w-3/4 shadow-lg bg-sky-500 text-white">
         <div className="flex justify-between text-2xl">
           <div className="text-left ml-16">
-            Income: <span className="text-4xl">750$</span>
+            Income: <span className="text-4xl">{totalIncome}$</span>
           </div>
           <div className="text-right mr-16 ">
             Expenses: <span className="text-4xl mr-16">{totalExpenses}$</span>
@@ -108,7 +103,7 @@ const AnalysisPage = () => {
         <div className="mt-4">
           <span className="text-md"></span>
           <div className="text-md border round rounded-2xl m-5 p-4">
-            {totalExpenses > income ? (
+            {totalExpenses > totalIncome ? (
               <span className="text-red-500">
                 Be carful, you seem to be spending more that you are earning
               </span>
@@ -127,7 +122,7 @@ const AnalysisPage = () => {
 
           <div className="mt-5 flex justify-center items-center border rounded-2xl hover:shadow-2xl p-4">
             <div>
-              <IncomeExpensesChart income={income} expenses={totalExpenses} />
+              <IncomeExpensesChart income={totalIncome} expenses={totalExpenses} />
             </div>
           </div>
         </div>
@@ -139,7 +134,7 @@ const AnalysisPage = () => {
           <div className="mt-5 flex justify-center items-center border rounded-2xl hover:shadow-2xl p-4">
             <div>
               <AverageComparisonChart
-                current={income}
+                current={totalIncome}
                 average={averageMonthlyIncome}
               />
             </div>
