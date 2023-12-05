@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/soen357-prototype/static/css/main.2d1eb5c8.css",
+    "main.js": "/soen357-prototype/static/js/main.d4be2668.js",
+    "index.html": "/soen357-prototype/index.html",
+    "main.2d1eb5c8.css.map": "/soen357-prototype/static/css/main.2d1eb5c8.css.map",
+    "main.d4be2668.js.map": "/soen357-prototype/static/js/main.d4be2668.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d1eb5c8.css",
+    "static/js/main.d4be2668.js"
+  ]
+}
