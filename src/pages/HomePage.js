@@ -50,7 +50,7 @@ const HomePage = () => {
         </span>
         <div className="flex justify-between">
           <div className="text-left">
-            <h1 className="text-2xl font-semibold">Expenses</h1>
+            {/* <h1 className="text-2xl font-semibold">Expenses</h1> */}
           </div>
           <div className="text-right">
             <Link to="/analysis">
