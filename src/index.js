@@ -10,6 +10,7 @@ import IncomePage from "./pages/IncomePage";
 import AnalysisPage from "./pages/AnalysisPage";
 import TipsPage from "./pages/TipsPage";
 import LoginPage from "./pages/LoginPage";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -28,3 +29,6 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+
+
