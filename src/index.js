@@ -10,7 +10,7 @@ import IncomePage from "./pages/IncomePage";
 import AnalysisPage from "./pages/AnalysisPage";
 import TipsPage from "./pages/TipsPage";
 import LoginPage from "./pages/LoginPage";
-import { WebVitalsGlobal } from "web-vitals";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -32,4 +32,3 @@ root.render(
 
 
 
-WebVitalsGlobal();
