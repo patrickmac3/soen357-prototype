@@ -13,7 +13,7 @@ import LoginPage from "./pages/LoginPage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/soen357-prototype">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<LoginPage />} />
